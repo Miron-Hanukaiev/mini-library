@@ -24,8 +24,28 @@ export interface BookListProps {
 
 // The props shape passed into Search component
 export interface SearchProps {
-    searchText: string;
+    text: string;
+    setText: (value: string) => void;
+
     searchBy: "title" | "author";
-    setSearchText: (value: string) => void;
     setSearchBy: (value: "title" | "author") => void;
+
+    tag: Tag | "";
+    setTag: (value: Tag | "") => void;
+
+    rating: Rating;
+    setRating: (value: Rating) => void;
 }
+
+export type Rating =
+  | 0
+  | 0.5
+  | 1
+  | 1.5
+  | 2
+  | 2.5
+  | 3
+  | 3.5
+  | 4
+  | 4.5
+  | 5;
