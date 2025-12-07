@@ -1,6 +1,6 @@
 // Custom hook for fetching data with error & loading handling
 
-import { Book } from './types';
+import { Book } from '../types';
 import { useState, useEffect } from 'react';
 
 const useFetch = (url : string) => {

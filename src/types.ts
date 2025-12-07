@@ -24,8 +24,8 @@ export interface BookListProps {
 
 // The props shape passed into Search component
 export interface SearchProps {
-    text: string;
-    setText: (value: string) => void;
+    title: string;
+    setTitle: (value: string) => void;
 
     searchBy: "title" | "author";
     setSearchBy: (value: "title" | "author") => void;
@@ -35,6 +35,12 @@ export interface SearchProps {
 
     rating: Rating;
     setRating: (value: Rating) => void;
+
+    titleSort: TitleSort;
+    setTitleSort: (value: TitleSort) => void;
+
+    ratingSort: RatingSort; 
+    setRatingSort: (value: RatingSort) => void;
 }
 
 export type Rating =
@@ -49,3 +55,36 @@ export type Rating =
   | 4
   | 4.5
   | 5;
+
+export type TitleSort = 
+    | "none"
+    | "A to Z"
+    | "Z to A";
+
+export type RatingSort = 
+    | "none"
+    | "low to high"
+    | "high to low";
+
+export interface Filter {
+    title: string;
+    setTitle: (value: string) => void;
+
+    searchBy: "title" | "author";
+    setSearchBy: (value: "title" | "author") => void;
+
+    tag: Tag | "";
+    setTag: (value: Tag | "") => void;
+
+    rating: Rating;
+    setRating: (value: Rating) => void;
+
+}
+
+export interface BookSort {
+    titleSort: TitleSort;
+    setTitleSort: (value: TitleSort) => void;
+
+    ratingSort: RatingSort; 
+    setRatingSort: (value: RatingSort) => void;
+}

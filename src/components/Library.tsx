@@ -1,19 +1,21 @@
 // Parent component that loads book data and passes it to BookList
 
 import BookList from "./BookList";
-import useFetch from "./useFetch";
+import useFetch from "../hooks/useFetch";
 import Search from "./Search"
 import {useState} from "react";
-import { Tag, Rating } from "./types";
+import { Tag, Rating, TitleSort, RatingSort } from "../types";
 
 const Library = () => {
     const{data: books, isLoading, error} = useFetch("/books.json");
 
     // State for search input and selected search type
-    const [text, setText] = useState("");
+    const [title, setTitle] = useState("");
     const [searchBy, setSearchBy] = useState<"title" | "author">("title");
     const [tag, setTag] = useState<Tag | "">("");
     const [rating, setRating] = useState<Rating>(0);
+    const [titleSort, setTitleSort] = useState<TitleSort>("none");
+    const [ratingSort, setRatingSort] = useState<RatingSort>("none");
 
     const filteredBooks = () => {
         if(!books) return null;
@@ -22,7 +24,7 @@ const Library = () => {
         let filtered =  books.filter(book =>
             book[searchBy]
             .toLowerCase()
-            .includes(text.toLowerCase()));
+            .includes(title.toLowerCase()));
         
         // Extending the filter by a tag selection if happened
         if(tag) {
@@ -36,7 +38,29 @@ const Library = () => {
             book.rating >= rating
             )
         }
-            return filtered;
+
+        filtered.sort((a, b) => {
+    
+            // compare rating first
+            if (ratingSort === "low to high") {
+                if (a.rating !== b.rating) return a.rating - b.rating;
+            } 
+            else if (ratingSort === "high to low") {
+                if (a.rating !== b.rating) return b.rating - a.rating;
+            }
+
+            // if ratings are equal then compare titles
+            if (titleSort === "A to Z") {
+                return a.title.localeCompare(b.title);
+            } 
+            else if (titleSort === "Z to A") {
+                return b.title.localeCompare(a.title);
+            }
+
+            return 0; // the books won't change places
+        });
+
+        return filtered;
     } 
 
     return (
@@ -44,14 +68,18 @@ const Library = () => {
             {error && <div>{error}</div>}
             {isLoading && <div>Loading...</div>}
             {books && <Search
-                            text={text}
-                            setText={setText}
+                            title={title}
+                            setTitle={setTitle}
                             searchBy={searchBy}
                             setSearchBy={setSearchBy}
                             tag={tag}
                             setTag={setTag}
                             rating={rating}
                             setRating={setRating}
+                            titleSort={titleSort}
+                            setTitleSort={setTitleSort}
+                            ratingSort={ratingSort}
+                            setRatingSort={setRatingSort}
                             />}
             {books && <BookList books={filteredBooks() ?? [] } />}
         </div>

@@ -1,18 +1,11 @@
 // Component responsible for rendering search form
 
-import { Tag, Rating, SearchProps } from "./types";
+import Filters from "./Filters";
+import Sort from "./Sort"
+import { Tag, Rating, SearchProps} from "../types";
 
-const Search = ({text, setText, searchBy, setSearchBy, tag, setTag, rating, setRating} : SearchProps ) => {
-
-    const resetFilter = () => {
-        setText("");
-        setSearchBy("title");
-        setTag("");
-        setRating(0);
-
-
-    }
-
+const Search = ({title, setTitle, searchBy, setSearchBy, tag, setTag, rating, setRating,
+                titleSort, setTitleSort, ratingSort, setRatingSort} : SearchProps ) => {
 
     return ( 
         <div className="search-book">
@@ -22,8 +15,8 @@ const Search = ({text, setText, searchBy, setSearchBy, tag, setTag, rating, setR
                 <input
                     type="text"
                     placeholder={`Search by ${searchBy}`}
-                    value={text}
-                    onChange = {(e) => setText(e.target.value)} />
+                    value={title}
+                    onChange = {(e) => setTitle(e.target.value)} />
 
                 <label>Select way to select</label>
                 <select id="search-by"
@@ -34,7 +27,7 @@ const Search = ({text, setText, searchBy, setSearchBy, tag, setTag, rating, setR
                 </select>
 
                 <label>Select by tag</label>
-                <select id="tag-search"
+                <select
                     value = {tag}
                     onChange = {(e) => setTag(e.target.value as Tag | "")} >
                     <option value="">All Tags</option>
@@ -53,19 +46,31 @@ const Search = ({text, setText, searchBy, setSearchBy, tag, setTag, rating, setR
                     min="0"
                     max="5"
                     step="0.5"
-                    value= {rating}
+                    value={rating}
                     onChange = {(e) => setRating(Number(e.target.value) as Rating)}>
                 </input>
-                <label>{rating} rating and above</label>
+                <label>{rating} rating and above </label>
+
+
             </form>
 
-            <div className="filter-menu">
-                {text === "" && tag === "" && rating === 0 && <div>No filter applied.</div>}
-                {text !== "" && <div>text filter activated</div>}
-                {tag !== "" && <div>tag filter activated</div>}
-                {rating > 0 && <div>rating filter activated</div>}
-                <button onClick={resetFilter}>Reset filter</button>
-            </div>
+            <Filters
+                title={title}
+                setTitle={setTitle}
+                searchBy={searchBy}
+                setSearchBy={setSearchBy}
+                tag={tag}
+                setTag={setTag}
+                rating={rating}
+                setRating={setRating} 
+            />
+
+            <Sort
+                titleSort={titleSort}
+                setTitleSort={setTitleSort}
+                ratingSort={ratingSort}
+                setRatingSort={setRatingSort}
+            />
         </div>
      );
 }

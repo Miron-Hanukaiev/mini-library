@@ -1,7 +1,6 @@
 // Component responsible for rendering book cards list
 
-import { BookListProps } from "./types";
-import './index.css';
+import { BookListProps } from "../types";
 
 const BookList = ( {books} : BookListProps) => {
 
