@@ -1,8 +1,8 @@
 // Component responsible for showing the sorting options
 
-import {BookSort} from "../types";
+import {BookSortProps} from "../types";
 
-const Sort = ({ titleSort, setTitleSort, ratingSort, setRatingSort }: BookSort) => {
+const Sort = ({ titleSort, setTitleSort, ratingSort, setRatingSort }: BookSortProps) => {
     return ( 
             <div className="sort-card">
                 <form> 

@@ -20,6 +20,7 @@ export interface Book {
 // The props shape passed into BookList component
 export interface BookListProps {
     books: Book[];
+    showOnlyFavorites: boolean;
 }
 
 // The props shape passed into Search component
@@ -66,7 +67,7 @@ export type RatingSort =
     | "low to high"
     | "high to low";
 
-export interface Filter {
+export interface FilterProps {
     title: string;
     setTitle: (value: string) => void;
 
@@ -81,10 +82,15 @@ export interface Filter {
 
 }
 
-export interface BookSort {
+export interface BookSortProps {
     titleSort: TitleSort;
     setTitleSort: (value: TitleSort) => void;
 
     ratingSort: RatingSort; 
     setRatingSort: (value: RatingSort) => void;
+}
+
+export interface FavoriteProps {
+    showOnlyFavorites: boolean;
+    setShowOnlyFavorites: (value: boolean) => void;
 }

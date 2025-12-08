@@ -1,3 +1,5 @@
+// Main application that renders Library module
+
 import Library from './Library';
 
 function App() {

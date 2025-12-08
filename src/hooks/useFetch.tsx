@@ -1,4 +1,4 @@
-// Custom hook for fetching data with error & loading handling
+// Custom hook for fetching data with error and loading handling
 
 import { Book } from '../types';
 import { useState, useEffect } from 'react';
@@ -6,7 +6,7 @@ import { useState, useEffect } from 'react';
 const useFetch = (url : string) => {
     const[books, setBooks] = useState<Book[] | null>(null);
     const[isLoading, setIsLoading] = useState(true);
-    const[error, setError] = useState(null);
+    const[error, setError] = useState<string | null>(null);
 
     useEffect(() => {
         // Fetch executes once on load or when URL changes

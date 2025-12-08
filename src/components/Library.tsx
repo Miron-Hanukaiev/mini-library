@@ -1,10 +1,11 @@
-// Parent component that loads book data and passes it to BookList
+// Parent component that loads book data and passes it to BookList, Search and Favorites
 
 import BookList from "./BookList";
 import useFetch from "../hooks/useFetch";
 import Search from "./Search"
 import {useState} from "react";
 import { Tag, Rating, TitleSort, RatingSort } from "../types";
+import Favorites from "./Favorites";
 
 const Library = () => {
     const{data: books, isLoading, error} = useFetch("/books.json");
@@ -16,7 +17,9 @@ const Library = () => {
     const [rating, setRating] = useState<Rating>(0);
     const [titleSort, setTitleSort] = useState<TitleSort>("none");
     const [ratingSort, setRatingSort] = useState<RatingSort>("none");
+    const [showOnlyFavorites, setShowOnlyFavorites] = useState<boolean>(false);
 
+    // Derived filtering and avoids re-rendering
     const filteredBooks = () => {
         if(!books) return null;
 
@@ -81,7 +84,16 @@ const Library = () => {
                             ratingSort={ratingSort}
                             setRatingSort={setRatingSort}
                             />}
-            {books && <BookList books={filteredBooks() ?? [] } />}
+            {books && <Favorites
+                            showOnlyFavorites={showOnlyFavorites}
+                            setShowOnlyFavorites={setShowOnlyFavorites} 
+                            />}
+            {books && <BookList 
+                            books={filteredBooks() ?? [] }
+                            showOnlyFavorites={showOnlyFavorites} 
+                            />}
+            
+
         </div>
     );
 

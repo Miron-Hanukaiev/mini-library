@@ -194,3 +194,15 @@ body {
   background-color: #eff6ff;
   color: #1d4ed8;
 }
+
+.fav-toggle {
+    padding: 8px 14px;
+    background-color: #316cec;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: 0.2s ease;
+    font-weight: 500;
+}

@@ -1,10 +1,10 @@
 // Component responsible for showing the active filters
 
-import {Filter} from "../types"
+import {FilterProps} from "../types"
 
-const Filters = ( {title, setTitle, searchBy, setSearchBy, tag, setTag, rating, setRating} : Filter) => {
+const Filters = ( {title, setTitle, searchBy, setSearchBy, tag, setTag, rating, setRating} : FilterProps) => {
 
-    const resetFilter = () => {
+    const resetFilters = () => {
         setTitle("");
         setSearchBy("title");
         setTag("");
@@ -17,7 +17,7 @@ const Filters = ( {title, setTitle, searchBy, setSearchBy, tag, setTag, rating, 
             {title !== "" && <div>text filter activated</div>}
             {tag !== "" && <div>tag filter activated</div>}
             {rating > 0 && <div>rating filter activated</div>}
-            <button onClick={resetFilter}>Reset filter</button>
+            <button onClick={resetFilters}>Reset filter</button>
         </div>
      );
 }
