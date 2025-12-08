@@ -25,7 +25,7 @@ Tradeoff: the function has a depth, but it's easier to focus and to follow it, w
 Run the project:
 open the terminal in project, type: npm install, after that type:
 ````
-npm start.
+npm start
 ````
 The app will be open at http://localhost:3000/
 
