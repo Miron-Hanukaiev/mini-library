@@ -23,7 +23,10 @@ Tradeoff: it abstracts the errors, but keeps components more clean.
 Tradeoff: the function has a depth, but it's easier to focus and to follow it, with less errors.
 
 Run the project:
-open the terminal in project, type: npm install, after that type: npm start.
+open the terminal in project, type: npm install, after that type:
+````
+npm start.
+````
 The app will be open at http://localhost:3000/
 
 Tech Stack:
