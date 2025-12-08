@@ -9,7 +9,7 @@ const Search = ({title, setTitle, searchBy, setSearchBy, tag, setTag, rating, se
 
     return ( 
         <div className="search-book">
-            <h2>Please select the search way:</h2>
+            <h2>Please enter your filter:</h2>
             <form>
                 <label>Search by author/title</label>
                 <input
