@@ -7,7 +7,6 @@ const Sort = ({ titleSort, setTitleSort, ratingSort, setRatingSort }: BookSortPr
             <div className="sort-card">
                 <form> 
                     <div className="sort-section">
-                        <label>A→Z</label>
                         <input
                             type="radio"
                             name="titleSort"
@@ -15,8 +14,8 @@ const Sort = ({ titleSort, setTitleSort, ratingSort, setRatingSort }: BookSortPr
                             checked={titleSort === "A to Z"}
                             onChange={(e) => setTitleSort("A to Z")} 
                         />
+                        <label>A→Z</label>
 
-                        <label>Z→A</label>
                         <input
                             type="radio"
                             name="titleSort"
@@ -24,10 +23,10 @@ const Sort = ({ titleSort, setTitleSort, ratingSort, setRatingSort }: BookSortPr
                             checked={titleSort === "Z to A"}
                             onChange={(e) => setTitleSort("Z to A")}
                         />
+                        <label>Z→A</label>
                     </div>
                     
                     <div className="sort-section">
-                        <label>high→low</label>
                         <input
                             type="radio"
                             name="ratingSort"
@@ -35,8 +34,8 @@ const Sort = ({ titleSort, setTitleSort, ratingSort, setRatingSort }: BookSortPr
                             checked={ratingSort === "high to low"}
                             onChange={(e) => setRatingSort("high to low")}
                         />
+                        <label>high→low</label>
         
-                        <label>low→high</label>
                         <input
                             type="radio"
                             name="ratingSort"
@@ -44,6 +43,7 @@ const Sort = ({ titleSort, setTitleSort, ratingSort, setRatingSort }: BookSortPr
                             checked={ratingSort === "low to high"}
                             onChange={(e) => setRatingSort("low to high")}
                         />
+                        <label>low→high</label>
                     </div>
                     
                 </form>
